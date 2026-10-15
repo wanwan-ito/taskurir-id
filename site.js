@@ -23,12 +23,7 @@
     { f: 'best-meat',     n: 'Best Meat',     c: '#F28A1E' },
     { f: 'paxel',         n: 'Paxel',         c: '#5B49C8' },
     { f: 'indomaret',     n: 'Indomaret',     c: '#E4202A' },
-    { f: 'sayurbox',      n: 'Sayurbox',      c: '#8AA23A' },
-    { f: 'nippon-paint',  n: 'Nippon Paint',  c: '#1A4FA0' },
-    { f: 'mayora',        n: 'Mayora',        c: '#D9262C' },
-    { f: 'aqua',          n: 'Aqua',          c: '#0B84C6' },
-    { f: 'walls',         n: "Wall's",        c: '#E4002B' },
-    { f: 'sido-muncul',   n: 'Sido Muncul',   c: '#8A5A2B' }
+    { f: 'nippon-paint',  n: 'Nippon Paint',  c: '#1A4FA0' }
   ];
   BRANDS.forEach(function (b) { b.src = BASE + 'assets/logo/' + b.f + '.png'; var im = new Image(); im.src = b.src; });
   var N = BRANDS.length;

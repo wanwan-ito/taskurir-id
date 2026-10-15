@@ -299,6 +299,8 @@ html.has-cursor .btn, html.has-cursor .social__a { cursor: pointer; }
   .same__item { flex-basis: 62vw; }
   .same__img { aspect-ratio: 1 / 1; }
   .kind { flex-basis: 68vw; }
+  /* Akhir geser: blok penutup pas selebar layar, teks di tengah kiri-kanan. */
+  .kinds .rail__end { flex-basis: 100vw; box-sizing: border-box; padding-inline: var(--sc-gutter); text-align: center; text-wrap: balance; }
 
   .cap__layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: var(--sc-4); align-items: start; padding-top: calc(var(--bar-h) + 0.25rem); padding-bottom: var(--sc-4); }
   .cap__shot { aspect-ratio: 1 / 0.82; }

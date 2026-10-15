@@ -352,7 +352,12 @@
 
       // horizontal rail
       act.rail = el.querySelector('[data-sc-pan]');
-      if (act.rail) act.railExtra = parseFloat(act.rail.getAttribute('data-sc-pan')) || 0;
+      if (act.rail) {
+        act.railExtra = parseFloat(act.rail.getAttribute('data-sc-pan')) || 0;
+        // data-sc-pan-sm: extra travel for narrow screens (<=860px). "0" lets the last item rest exactly in view.
+        var sm = act.rail.getAttribute('data-sc-pan-sm');
+        act.railExtraSm = sm === null ? null : (parseFloat(sm) || 0);
+      }
 
       // cues
       Array.prototype.forEach.call(el.querySelectorAll('[data-sc-cue]'), function (c) {
@@ -806,7 +811,7 @@
         if (a.rail) {
           var over = a.rail.scrollWidth - vw;
           if (over > 0) {
-            var extra = over * (a.railExtra || 0);
+            var extra = over * ((vw <= 860 && a.railExtraSm !== null ? a.railExtraSm : a.railExtra) || 0);
             a.rail.style.transform = 'translate3d(' + (-(over + extra) * a.p).toFixed(2) + 'px,0,0)';
           }
         }

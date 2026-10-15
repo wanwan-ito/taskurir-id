@@ -168,6 +168,8 @@ h1, h2, h3 { font-family: var(--sc-font-display); font-weight: 700; }
 .proof__stage { display: flex; align-items: center; padding-top: var(--bar-h); background: var(--sc-canvas); }
 .proof__stage > .sc-wrap { width: 100%; }
 .swap__tag { position: absolute; left: 14px; bottom: 14px; z-index: 3; box-shadow: var(--sc-e3), var(--sc-edge); }
+.swap__tag { grid-template-columns: auto auto; }
+.swap__tag .plate__v { white-space: nowrap; }
 .proof__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "lead swap" "details swap"; gap: var(--sc-6) clamp(2rem, 5vw, 5rem); align-items: start; }
 .proof__lead { grid-area: lead; }
 .proof__swap { grid-area: swap; position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: var(--r-frame); overflow: hidden; box-shadow: var(--sc-e3), var(--sc-edge); background: #fff; }

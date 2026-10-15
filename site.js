@@ -143,6 +143,7 @@
       if (!seen) { seen = true; rx = mx; ry = my; cur.style.opacity = '1'; }
       var t = e.target && e.target.closest ? (e.target.closest('[data-cursor]') || e.target.closest('a, button')) : null;
       var kind = !t ? '' : t.getAttribute('data-cursor') || 'link';
+      if (t && t.classList && (t.classList.contains('btn') || t.classList.contains('social__a'))) kind = 'hand'; // tombol CTA: kursor tangan bawaan
       if (kind === 'look') lab.textContent = 'Tanya';
       cur.setAttribute('data-state', kind);
     }, { passive: true });

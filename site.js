@@ -8,6 +8,40 @@
   function $(s, c) { return (c || document).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
 
+  /* --------------------------------------------- klien (Dipercaya) ---- */
+  // Disisipkan sebelum mount supaya engine ikut menghitung posisinya.
+  (function klien() {
+    var hero = document.getElementById('polos');
+    if (!hero || document.getElementById('klien')) return;
+    var base = (root.getAttribute('data-asset-base') || 'https://wanwan-ito.github.io/taskurir-id/') + 'assets/klien/';
+    var alt = 'Logo klien yang memakai tas kurir, tas obrok dan tas delivery Indah Tas Obrok: Indofood, Mayora, J&T, Paxel, Shopee Xpress, JNE, Indomaret, Honda, Toyota-Astra Motor dan lainnya';
+    var sec = document.createElement('section');
+    sec.className = 'klien';
+    sec.id = 'klien';
+    sec.setAttribute('aria-labelledby', 'klien-h');
+    sec.innerHTML =
+      '<div class="sc-wrap klien__in" data-sc-in="">' +
+        '<h2 class="sc-display sc-display--md klien__h" id="klien-h">Dipercaya 1000+</h2>' +
+        '<p class="sc-body klien__p">Perusahaan nasional maupun usaha lokal sudah memakai tas dari kami.</p>' +
+        '<picture class="klien__logos">' +
+          '<source media="(max-width: 720px)" srcset="' + base + 'logo-klien-tas-kurir-tas-obrok-taskurir-mobile.webp" width="709" height="581">' +
+          '<img src="' + base + 'logo-klien-tas-kurir-tas-obrok-taskurir.webp" width="2560" height="525" loading="lazy" decoding="async" alt="' + alt + '">' +
+        '</picture>' +
+      '</div>';
+    hero.parentNode.insertBefore(sec, hero.nextSibling);
+  })();
+
+  // Act Cap logo: scroll hanya memutar 3 logo (lihat SCROLL_BRANDS), jadi pin dipendekkan
+  // dari 3.4 ke 2.2 layar. Logo lain tetap bisa dipasang lewat klik tas atau tombol logo.
+  // Judul "Pasang logo..." tidak lagi memudar di akhir (dulu fade-out 30% terakhir = logo ke-3 tampil pudar).
+  (function () {
+    var c = document.getElementById('cap');
+    if (!c) return;
+    c.setAttribute('data-sc-span', '2.2');
+    var says = c.querySelectorAll('.cap__says > [data-sc-cue]');
+    if (says[1]) says[1].setAttribute('data-sc-cue', '0.26 1 0.3 0.04');
+  })();
+
   if (window.ScrollCraft) { window.ScrollCraft.mount(document.body); }
 
   /* ----------------------------------------------------------- logo ---- */
@@ -27,6 +61,8 @@
   ];
   BRANDS.forEach(function (b) { b.src = BASE + 'assets/logo/' + b.f + '.png'; var im = new Image(); im.src = b.src; });
   var N = BRANDS.length;
+  // Logo yang diputar saat scroll (indeks BRANDS): Shopee Xpress, Indofood, Indomaret.
+  var SCROLL_BRANDS = [0, 5, 8];
   var NEUTRAL = '#F4F3EF';
   function tint(c) { return 'color-mix(in oklab, ' + c + ' 26%, ' + NEUTRAL + ')'; }
 
@@ -123,12 +159,13 @@
 
   function scrollIdx() {
     var p = parseFloat(cap.style.getPropertyValue('--sc-p')) || 0;
-    var idx = p < 0.26 ? -1 : Math.min(N - 1, Math.floor(((p - 0.26) / 0.72) * N));
+    var SN = SCROLL_BRANDS.length;
+    var idx = p < 0.26 ? -1 : Math.min(SN - 1, Math.floor(((p - 0.26) / 0.72) * SN));
     if (idx !== st.scrollIdx) {
       var first = st.scrollIdx === -2;
       st.scrollIdx = idx;
       syncSays();
-      if (idx >= 0) stamp(idx);
+      if (idx >= 0) stamp(SCROLL_BRANDS[idx]);
       else if (!first) reset();
     }
   }

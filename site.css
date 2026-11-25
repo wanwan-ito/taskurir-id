@@ -335,3 +335,12 @@ html.has-cursor .btn, html.has-cursor .social__a { cursor: pointer; }
   .patch.is-on, .cap__shot.is-bump { animation: none; }
   .flood { animation-duration: 1ms; }
 }
+
+/* ---------------------------------------------- klien (Dipercaya 1000+) ---- */
+.klien { background: var(--sc-surface); padding-block: var(--sc-8) var(--sc-7); border-block: 1px solid var(--sc-hairline); }
+.klien__in { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--sc-3); }
+.klien__h { margin: 0; }
+.klien__p { margin: 0; color: var(--sc-ink-soft); max-width: 46ch; }
+.klien__logos { display: block; width: 100%; max-width: 1180px; margin-top: var(--sc-5); }
+.klien__logos img { display: block; width: 100%; height: auto; }
+@media (max-width: 720px) { .klien__logos { max-width: 520px; margin-top: var(--sc-4); } }
